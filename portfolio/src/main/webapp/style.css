@@ -1,9 +1,81 @@
-#content {
-  margin-left: auto;
-  margin-right: auto;
-  width: 650px;
+@font-face {
+    font-family: 'beauty_and_the_beastregular';
+    src: url('/fonts/beautyandthebeastsample-webfont.woff2') format('woff2'),
+         url('/fonts/beautyandthebeastsample-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
 }
 
-#greeting-container {
-  margin-top: 20px;
+@font-face {
+    font-family: 'allthingspink';
+    src: url('/fonts/all_things_pink-webfont.woff2') format('woff2'),
+         url('/fonts/all_things_pink-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+h1 {
+    font-family: 'beauty_and_the_beastregular';
+    font-weight:normal;
+    font-style:normal;
+    padding: 2px;
+}
+
+
+h3 {
+    font-size: 26px;
+}
+
+p {
+    font-size: 20px;
+}
+
+li {
+    font-size: 20px;
+}
+
+a {
+    font-size: 20px;
+}
+
+body {
+    background-image: url("images/peachBlossomBg.jpg");
+    background-repeat: no-repeat, no-repeat;
+    background-size: cover;
+    font-family: 'allthingspink';
+}
+
+#content {
+    margin-right: auto;
+    width: 52%;
+    margin-left: 150px;
+    padding: 0px 10px;
+}
+
+/* added */
+#sidenav {
+    width: 130px;
+    position: fixed;
+    z-index: 1;
+    top: 20px;
+    left: 20px;
+    background: rgba(255, 255, 255, 0.8);
+    overflow-x: hidden;
+    padding: 8px 0;
+}
+
+#sidenav a {
+    padding: 6px 8px 6px 16px;
+    text-decoration: none;
+    font-size: 40 px;
+    font-family: 'allthingspink';
+    font-style: bold;
+    color: rgb(0, 0, 0);
+    display: block;
+}
+
+#sidenav a:hover {
+    text-shadow: -.25px -.25px 0 black, 
+                .25px .25px black; 
+    color: #660066;
 }
