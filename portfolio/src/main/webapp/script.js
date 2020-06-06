@@ -14,27 +14,29 @@
 
 // PROJECT SLIDESHOW LOGIC
 let slideIndex = 1;
-showSlides(slideIndex);
+showSlides();
 
-function plusSlides(n) {
-  showSlides(slideIndex += n);
+function changeSlide(n) {
+  let slides = document.getElementsByClassName("project");
+  slideIndex += n;
+  if (slideIndex > slides.length) {
+      slideIndex = 1;
+  }
+  if (slideIndex < 1) {
+      slideIndex = slides.length;
+  }
+  showSlides();
 }
 
-function currentSlide(n) {
-  showSlides(slideIndex = n);
+function setCurrentSlide(n) {
+  slideIndex = n;
+  showSlides();
 }
 
-function showSlides(n) {
+function showSlides() {
   let i;
   let slides = document.getElementsByClassName("project");
   let dots = document.getElementsByClassName("dot");
-
-  if (n > slides.length) {
-      slideIndex = 1;
-  }
-  if (n < 1) {
-      slideIndex = slides.length;
-  }
 
   for (i = 0; i < slides.length; i++) {
       slides[i].style.display = "none";  
