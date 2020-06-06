@@ -12,6 +12,7 @@
     <div id="sidenav">
         <a href="#about">About Me</a>
         <a href="#projects">Projects</a>
+        <a href="#experiences">Experience</a>
         <a href="#contact">Contact</a>
     </div>
 
@@ -30,8 +31,7 @@
             </p>
             <p>
                 Prior to my computing journey, I have a strong interest in Biology 🧬 and teaching. 
-                To date, I have been actively involved in being teaching assistants 👩‍🏫 for NUS modules 
-                (CS1010 Programming Methodology and CP1002 Independent Software Development) as well as a A levels Biology tutor. 
+                To date, I have been actively involved in being teaching assistants 👩‍🏫 for NUS modules and an A levels Biology tutor. 
             </p>
             <p> In my free time, I enjoy reading, writing calligraphy 🖌️ (both english and chinese) and watching movies/dramas/variety shows 📺! </p>
             <p> This is a portfolio page built from Google Software Product Sprint Program! It uses HTML, CSS, Javascript, Java and Google App Engine!</p>
@@ -70,22 +70,77 @@
                     <h5>Built in a 24-hour hackathon using Phaser</h5>
                 </div>
 
-                <a class="prev" onclick="changeSlide(-1)">&#10094;</a>
-                <a class="next" onclick="changeSlide(1)">&#10095;</a>
+                <a class="prev" onclick="changeProjectSlide(-1)">&#10094;</a>
+                <a class="next" onclick="changeProjectSlide(1)">&#10095;</a>
             </div>
-            <script>showSlides(1)</script>
+        
+            <br>
+
+            <div style="text-align:center">
+                <span class="project-dot" onclick="setCurrentProjectSlide(1)"></span> 
+                <span class="project-dot" onclick="setCurrentProjectSlide(2)"></span> 
+                <span class="project-dot" onclick="setCurrentProjectSlide(3)"></span>
+                <span class="project-dot" onclick="setCurrentProjectSlide(4)"></span> 
+                <span class="project-dot" onclick="setCurrentProjectSlide(5)"></span> 
+            </div>
+            <script>showProjectSlides()</script>
+
+        </div>
+
+        <div id="Experiences">
+            <h3> Experience 🎓 </h3>
+        
+            <p>Here are some of my past work/internship experience!</p>
+                    
+            <div class="experience-container">
+                <div class="experience fade">
+                    <h4>Govtech</h4>
+                    <h5>Software Engineer Intern</h5>
+                    <h5>Enhanced features on Whole-of-Government Application Analytics platform.</h5>
+                    <div class ="workDuration">May 2020 - Present</div>
+                </div>
+                <div class="experience fade">
+                    <h4>Shopee</h4>
+                    <h5>Product Manager Intern</h5>
+                    <h5>Contributed to the project aimed at improving the data quality of the Shopee Search System. Increased the coverage of users’ keywords of the project by at least 53%</h5>
+                    <div class ="workDuration">Feb - Apr 2020</div>
+                </div>
+                <div class="experience fade">
+                    <h4>Vouch SG</h4>
+                    <h5> Software developer / Account Manager Intern </h5>
+                    <h5>Built a new chatbot for HR claims management, refined Singapore Zoo and ST Logistics chatbot main features and performed extensive testing. Implemented a UI/UX feature using Node.js</h5>
+                    <div class ="workDuration">Dec 2019 - Jan 2020</div>
+                </div>
+                <div class="experience fade">
+                    <h4>NUS School of Computing</h4>
+                    <h5>Teaching Assistant</h5>
+                    
+                    <h5>CS1010 Programming Methodology: 
+                        Taught fundamental concepts of programming and problem solving in C.
+                        Conducted weekly tutorials and graded assignments of 12 students.
+                    </h5>
+                    <h5>CP2106 Independent Software Development: 
+                        Provided materials, guided and evaluated the progress of 5 teams building web and mobile applications. Awarded the Best Adviser Award. 
+                    </h5>
+                    <div class ="workDuration">Aug - Dec 2018, May - Aug 2019</div>
+                </div>
+
+                <a class="prev" onclick="changeExperienceSlide(-1)">&#10094;</a>
+                <a class="next" onclick="changeExperienceSlide(1)">&#10095;</a>
+            </div>
 
             <br>
 
             <div style="text-align:center">
-                <span class="dot" onclick="setCurrentSlide(1)"></span> 
-                <span class="dot" onclick="setCurrentSlide(2)"></span> 
-                <span class="dot" onclick="setCurrentSlide(3)"></span>
-                <span class="dot" onclick="setCurrentSlide(4)"></span> 
-                <span class="dot" onclick="setCurrentSlide(5)"></span> 
+                <span class="exp-dot" onclick="setCurrentExperienceSlide(1)"></span> 
+                <span class="exp-dot" onclick="setCurrentExperienceSlide(2)"></span> 
+                <span class="exp-dot" onclick="setCurrentExperienceSlide(3)"></span>
+                <span class="exp-dot" onclick="setCurrentExperienceSlide(4)"></span>
             </div>
+            <script>showExperienceSlides()</script>
 
         </div>
+
 
         <div id="contact">
             <h3> Contact 📞 </h3>
