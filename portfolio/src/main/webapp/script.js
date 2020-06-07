@@ -13,30 +13,53 @@
 // limitations under the License.
 
 // PROJECT SLIDESHOW LOGIC
-let slideIndex = 1;
-showSlides();
+let projectSlideIndex = 1;
+let experienceSlideIndex = 1;
 
-function changeSlide(n) {
+function changeProjectSlide(n) {
   let slides = document.getElementsByClassName("project");
-  slideIndex += n;
-  if (slideIndex > slides.length) {
-      slideIndex = 1;
+  projectSlideIndex += n;
+  if (projectSlideIndex > slides.length) {
+      projectSlideIndex = 1;
   }
-  if (slideIndex < 1) {
-      slideIndex = slides.length;
+  if (projectSlideIndex < 1) {
+      projectSlideIndex = slides.length;
   }
-  showSlides();
+  showProjectSlides();
 }
 
-function setCurrentSlide(n) {
-  slideIndex = n;
-  showSlides();
+function changeExperienceSlide(n) {
+  let slides = document.getElementsByClassName("experience");
+  experienceSlideIndex += n;
+  if (experienceSlideIndex > slides.length) {
+      experienceSlideIndex = 1;
+  }
+  if (experienceSlideIndex < 1) {
+      experienceSlideIndex = slides.length;
+  }
+  showExperienceSlides();
 }
 
-function showSlides() {
+function setCurrentProjectSlide(n) {
+  projectSlideIndex = n;
+  showProjectSlides();
+}
+function setCurrentExperienceSlide(n) {
+  experienceSlideIndex = n;
+  showExperienceSlides();
+}
+
+function showProjectSlides() {
+  showSlides("project", "project-dot", projectSlideIndex);
+}
+function showExperienceSlides() {
+  showSlides("experience", "exp-dot", experienceSlideIndex);
+}
+
+function showSlides(slideName, dotName, slideIndex) {
   let i;
-  let slides = document.getElementsByClassName("project");
-  let dots = document.getElementsByClassName("dot");
+  let slides = document.getElementsByClassName(slideName);
+  let dots = document.getElementsByClassName(dotName);
 
   for (i = 0; i < slides.length; i++) {
       slides[i].style.display = "none";  
