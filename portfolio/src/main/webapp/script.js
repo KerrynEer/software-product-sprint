@@ -12,6 +12,13 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+// Get response from server
+function getMessage() {
+  fetch('/data').then(response => response.text()).then((msg) => {
+    document.getElementById('message').innerText = msg;
+  });
+}
+
 // PROJECT SLIDESHOW LOGIC
 let projectSlideIndex = 1;
 let experienceSlideIndex = 1;
