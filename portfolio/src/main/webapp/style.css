@@ -89,6 +89,35 @@ body {
     color: #660066;
 }
 
+input[type=text] {
+    width: 100%;
+    padding: 10px 10px;
+    margin: 6px 25px;
+    border-radius: 4px;
+}
+
+input[type=text]:focus {
+  border: 1px solid #555;
+}
+
+input[type=submit] {
+    border-radius: 4px;
+    background-color: #3CBC8D;
+    color: white; 
+    font-family: 'allthingspink';
+    font-size: 18px;
+    border: 0px;
+    margin: 0px 25px;
+}
+
+input[type=submit]:hover {
+  border: 1px solid #555;
+}
+
+#past-comments {
+    background: rgba(255, 255, 255, 0.9);
+}
+
 * {
     box-sizing: border-box;
 }
