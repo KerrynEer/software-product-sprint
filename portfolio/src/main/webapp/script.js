@@ -17,16 +17,28 @@ function getLatestComments() {
   fetch('/comments').then(response => response.json()).then((comments) => {
     const pastCommentsEl = document.getElementById('past-comments');
     comments.forEach((line) => {
-      pastCommentsEl.appendChild(createListElement(line));
+      pastCommentsEl.appendChild(createCommentElement(line.text, line.dateCreated));
     });
   });
 }
 
-// Creates an <li> element containing text.
-function createListElement(text) {
-  const liElement = document.createElement('li');
-  liElement.innerText = text;
-  return liElement;
+// Creates an <div> element for each comment posted.
+function createCommentElement(text, date) {
+  const divElement = document.createElement('div');
+  divElement.className = "comment-container";
+
+  const textElement = document.createElement('div');
+  textElement.className = "comment-text-container";
+  textElement.innerText = text;
+
+  const dateElement = document.createElement('div');
+  dateElement.className = "comment-date-container";
+  dateElement.innerText = "Posted on " + date;
+
+  divElement.appendChild(textElement);
+  divElement.appendChild(dateElement);
+
+  return divElement;
 }
 
 

@@ -14,6 +14,7 @@
 
 package com.google.sps.servlets;
 
+import com.google.sps.data.Comment;
 import java.io.IOException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -22,12 +23,13 @@ import javax.servlet.http.HttpServletResponse;
 import com.google.gson.Gson;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Date;
 
 @WebServlet("/comments")
 public class DataServlet extends HttpServlet {
 
-    private List<String> messages = new ArrayList<String>(
-        List.of("I really like your webpage!")
+    private List<Comment> messages = new ArrayList<Comment>(
+        List.of(new Comment("I really like your webpage!", new Date()))
       );
 
   @Override
@@ -41,7 +43,7 @@ public class DataServlet extends HttpServlet {
   /**
    * Converts messages into a JSON string using the Gson library.
    */
-  private String convertToJsonUsingGson(List<String> messages) {
+  private String convertToJsonUsingGson(List<Comment> messages) {
     Gson gson = new Gson();
     String json = gson.toJson(messages);
     return json;
@@ -52,7 +54,9 @@ public class DataServlet extends HttpServlet {
     String userComment = request.getParameter("user-comment");
 
     if (!userComment.isEmpty()) {
-      messages.add(userComment);
+      Date currentDate = new Date();
+      Comment commentObj = new Comment(userComment, currentDate);
+      messages.add(commentObj);
     }
 
     response.sendRedirect("/index.html");
