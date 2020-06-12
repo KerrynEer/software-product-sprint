@@ -23,12 +23,11 @@ import com.google.gson.Gson;
 import java.util.ArrayList;
 import java.util.List;
 
-/** Servlet that returns some example content. TODO: modify this file to handle comments data */
-@WebServlet("/data")
+@WebServlet("/comments")
 public class DataServlet extends HttpServlet {
 
     private List<String> messages = new ArrayList<String>(
-        List.of("Welcome", "to my", "Google SPS portfolio page!")
+        List.of("I really like your webpage!")
       );
 
   @Override
@@ -47,4 +46,16 @@ public class DataServlet extends HttpServlet {
     String json = gson.toJson(messages);
     return json;
   }
+
+  @Override
+  public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    String userComment = request.getParameter("user-comment");
+
+    if (!userComment.isEmpty()) {
+      messages.add(userComment);
+    }
+
+    response.sendRedirect("/index.html");
+  }
+
 }

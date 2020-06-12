@@ -12,16 +12,23 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-// Get response from server
-function getMessage() {
-  let formattedMsg = '';
-  fetch('/data').then(response => response.json()).then((messages) => {
-      for (const msg of messages) {
-          formattedMsg += (msg + " ");
-      }
-      document.getElementById('message').innerText = formattedMsg;
+// Get latest comments from server
+function getLatestComments() {
+  fetch('/comments').then(response => response.json()).then((comments) => {
+    const pastCommentsEl = document.getElementById('past-comments');
+    comments.forEach((line) => {
+      pastCommentsEl.appendChild(createListElement(line));
     });
+  });
 }
+
+// Creates an <li> element containing text.
+function createListElement(text) {
+  const liElement = document.createElement('li');
+  liElement.innerText = text;
+  return liElement;
+}
+
 
 // PROJECT SLIDESHOW LOGIC
 let projectSlideIndex = 1;
