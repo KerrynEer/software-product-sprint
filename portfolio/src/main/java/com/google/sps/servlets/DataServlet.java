@@ -53,11 +53,9 @@ public class DataServlet extends HttpServlet {
   public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
     String userComment = request.getParameter("user-comment");
 
-    if (!userComment.isEmpty()) {
-      Date currentDate = new Date();
-      Comment commentObj = new Comment(userComment, currentDate);
-      commentsList.add(commentObj);
-    }
+    Date currentDate = new Date();
+    Comment commentObj = new Comment(userComment, currentDate);
+    commentsList.add(commentObj);
 
     response.sendRedirect("/index.html");
   }
