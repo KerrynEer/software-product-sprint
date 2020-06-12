@@ -28,24 +28,24 @@ import java.util.Date;
 @WebServlet("/comments")
 public class DataServlet extends HttpServlet {
 
-    private List<Comment> messages = new ArrayList<Comment>(
+    private List<Comment> commentsList = new ArrayList<Comment>(
         List.of(new Comment("I really like your webpage!", new Date()))
       );
 
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-    String msgInJson = convertToJsonUsingGson(messages);
+    String commentsInJson = convertToJsonUsingGson(commentsList);
 
     response.setContentType("application/json;");
-    response.getWriter().println(msgInJson);
+    response.getWriter().println(commentsInJson);
   }
 
   /**
-   * Converts messages into a JSON string using the Gson library.
+   * Converts list of comments into a JSON string using the Gson library.
    */
-  private String convertToJsonUsingGson(List<Comment> messages) {
+  private String convertToJsonUsingGson(List<Comment> commentsList) {
     Gson gson = new Gson();
-    String json = gson.toJson(messages);
+    String json = gson.toJson(commentsList);
     return json;
   }
 
@@ -56,7 +56,7 @@ public class DataServlet extends HttpServlet {
     if (!userComment.isEmpty()) {
       Date currentDate = new Date();
       Comment commentObj = new Comment(userComment, currentDate);
-      messages.add(commentObj);
+      commentsList.add(commentObj);
     }
 
     response.sendRedirect("/index.html");
