@@ -14,9 +14,13 @@
 
 // Get response from server
 function getMessage() {
-  fetch('/data').then(response => response.text()).then((msg) => {
-    document.getElementById('message').innerText = msg;
-  });
+  let formattedMsg = '';
+  fetch('/data').then(response => response.json()).then((messages) => {
+      for (const msg of messages) {
+          formattedMsg += (msg + " ");
+      }
+      document.getElementById('message').innerText = formattedMsg;
+    });
 }
 
 // PROJECT SLIDESHOW LOGIC
