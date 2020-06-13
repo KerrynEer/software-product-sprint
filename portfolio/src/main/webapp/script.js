@@ -12,16 +12,35 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-// Get response from server
-function getMessage() {
-  let formattedMsg = '';
-  fetch('/data').then(response => response.json()).then((messages) => {
-      for (const msg of messages) {
-          formattedMsg += (msg + " ");
-      }
-      document.getElementById('message').innerText = formattedMsg;
+// Get latest comments from server
+function getLatestComments() {
+  fetch('/comments').then(response => response.json()).then((comments) => {
+    const pastCommentsEl = document.getElementById('past-comments');
+    comments.forEach((line) => {
+      pastCommentsEl.appendChild(createCommentElement(line.text, line.dateCreated));
     });
+  });
 }
+
+// Creates an <div> element for each comment posted.
+function createCommentElement(text, date) {
+  const divElement = document.createElement('div');
+  divElement.className = "comment-container";
+
+  const textElement = document.createElement('div');
+  textElement.className = "comment-text-container";
+  textElement.innerText = text;
+
+  const dateElement = document.createElement('div');
+  dateElement.className = "comment-date-container";
+  dateElement.innerText = "Posted on " + date;
+
+  divElement.appendChild(textElement);
+  divElement.appendChild(dateElement);
+
+  return divElement;
+}
+
 
 // PROJECT SLIDESHOW LOGIC
 let projectSlideIndex = 1;

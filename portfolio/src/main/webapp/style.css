@@ -89,6 +89,55 @@ body {
     color: #660066;
 }
 
+input[type=text] {
+    width: 100%;
+    padding: 10px 10px;
+    margin: 6px 25px;
+    border-radius: 4px;
+}
+
+input[type=text]:focus {
+  border: 1px solid #555;
+}
+
+input[type=submit] {
+    border-radius: 4px;
+    background-color: #3CBC8D;
+    color: white; 
+    font-family: 'allthingspink';
+    font-size: 18px;
+    border: 0px;
+    margin: 0px 25px;
+}
+
+input[type=submit]:hover {
+  border: 1px solid #555;
+}
+
+.comment-container {
+    margin: 8px 25px;
+    background: rgba(255, 255, 255, 0.85);
+    width: 100%;
+    padding: 2px 15px 10px;
+    position: relative;
+}
+
+.comment-text-container {
+    width: 100%;
+    padding: 12px 0px 21px;
+    overflow-wrap: anywhere;
+    font-size: 18px;
+    font-style: italic;
+}
+
+.comment-date-container {
+    font-size: 14px;
+    padding: 10px 10px 1px 10px;
+    bottom: 0;
+    right: 0;
+    position: absolute;
+}
+
 * {
     box-sizing: border-box;
 }

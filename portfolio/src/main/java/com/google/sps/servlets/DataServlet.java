@@ -14,6 +14,7 @@
 
 package com.google.sps.servlets;
 
+import com.google.sps.data.Comment;
 import java.io.IOException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -22,29 +23,41 @@ import javax.servlet.http.HttpServletResponse;
 import com.google.gson.Gson;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Date;
 
-/** Servlet that returns some example content. TODO: modify this file to handle comments data */
-@WebServlet("/data")
+@WebServlet("/comments")
 public class DataServlet extends HttpServlet {
 
-    private List<String> messages = new ArrayList<String>(
-        List.of("Welcome", "to my", "Google SPS portfolio page!")
+    private List<Comment> commentsList = new ArrayList<Comment>(
+        List.of(new Comment("I really like your webpage!", new Date()))
       );
 
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-    String msgInJson = convertToJsonUsingGson(messages);
+    String commentsInJson = convertToJsonUsingGson(commentsList);
 
     response.setContentType("application/json;");
-    response.getWriter().println(msgInJson);
+    response.getWriter().println(commentsInJson);
   }
 
   /**
-   * Converts messages into a JSON string using the Gson library.
+   * Converts list of comments into a JSON string using the Gson library.
    */
-  private String convertToJsonUsingGson(List<String> messages) {
+  private String convertToJsonUsingGson(List<Comment> commentsList) {
     Gson gson = new Gson();
-    String json = gson.toJson(messages);
+    String json = gson.toJson(commentsList);
     return json;
   }
+
+  @Override
+  public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    String userComment = request.getParameter("user-comment");
+
+    Date currentDate = new Date();
+    Comment commentObj = new Comment(userComment, currentDate);
+    commentsList.add(commentObj);
+
+    response.sendRedirect("/index.html");
+  }
+
 }
