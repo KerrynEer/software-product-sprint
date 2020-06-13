@@ -7,21 +7,13 @@ import java.util.Date;
  * 
  */
 public class Comment {
-
+  private final long id;
   private final String text;
   private final Date dateCreated;
 
-  public Comment(String text, Date dateCreated) {
+  public Comment(Long id, String text, Date dateCreated) {
+    this.id = id;
     this.text = text;
     this.dateCreated = dateCreated;
   }
-
-  public String getText() {
-    return text;
-  }
-
-  public Date getDateCreated() {
-    return dateCreated;
-  }
-
 }
