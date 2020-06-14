@@ -37,9 +37,13 @@ public class DataServlet extends HttpServlet {
   DatastoreService datastore;
 
   @Override
+  public void init() {
+   datastore = DatastoreServiceFactory.getDatastoreService();
+  }
+
+  @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
     Query query = new Query("Comment").addSort("dateCreated", SortDirection.DESCENDING);
-    datastore = DatastoreServiceFactory.getDatastoreService();
     PreparedQuery results = datastore.prepare(query);
 
     List<Comment> comments = new ArrayList<>();
@@ -67,7 +71,6 @@ public class DataServlet extends HttpServlet {
     commentEntity.setProperty("text", userComment);
     commentEntity.setProperty("dateCreated", currentDate);
 
-    datastore = DatastoreServiceFactory.getDatastoreService();
     datastore.put(commentEntity);
 
     response.sendRedirect("/index.html");
