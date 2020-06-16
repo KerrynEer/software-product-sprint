@@ -12,6 +12,12 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+// this function is called from body onload attribute
+function loadPage() {
+    getLatestComments();
+    loadSparkleCursor();
+}
+
 // Get latest comments from server
 function getLatestComments() {
   fetch('/comments').then(response => response.json()).then((comments) => {
@@ -127,7 +133,7 @@ var tinyx=new Array();
 var tinyy=new Array();
 var tinyv=new Array();
 
-window.onload=function() { if (document.getElementById) {
+function loadSparkleCursor() { if (document.getElementById) {
   var i, rats, rlef, rdow;
   for (var i=0; i<sparkles; i++) {
     var rats=createDiv(3, 3);
@@ -152,6 +158,7 @@ window.onload=function() { if (document.getElementById) {
   }
   set_width();
   sparkle();
+  
 }}
 
 function sparkle() {
