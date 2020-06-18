@@ -41,7 +41,7 @@
         <div id="projects">
             <h3> Projects 📚 </h3>
         
-            <p>Below is a quick overview of the various software related projects I have embarked on!</p>
+            <p>A quick overview of the various software related projects I have embarked on!</p>
                     
             <div class="project-container">
                 <div class="project fade">
@@ -84,7 +84,6 @@
                 <span class="project-dot" onclick="setCurrentProjectSlide(5)"></span> 
             </div>
             <script>showProjectSlides()</script>
-
         </div>
 
         <div id="experiences">
@@ -150,10 +149,18 @@
             <li> Feel free to comment or ask any questions you have for me here! 
                 <form name="comment-form" action="/comments" method="POST">
                     <input type="text" name="user-comment" required>
-                    
                     <input type="submit" />
                 </form>
                 <br/>
+                <h5>Translate the following comments! </h5>
+                <select id="language" name="language">
+                    <option value="en">English</option>
+                    <option value="zh">Chinese</option>
+                    <option value="ko">Korean</option>
+                    <option value="hi">Hindi</option>
+                </select>
+                <input type="submit" value="Translate" onclick="getLatestComments()">
+                
                 <div id="past-comments"></div>
             </li>
             
