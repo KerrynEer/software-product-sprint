@@ -20,12 +20,17 @@ function loadPage() {
 
 // Get latest comments from server
 function getLatestComments() {
-  fetch('/comments').then(response => response.json()).then((comments) => {
-    const pastCommentsEl = document.getElementById('past-comments');
-    comments.forEach((line) => {
-      pastCommentsEl.appendChild(createCommentElement(line.text, line.dateCreated));
+    const language = document.getElementById('language').value;
+    const params = new URLSearchParams();
+    params.append('language', language);
+
+    fetch('/comments?'+ params).then(response => response.json()).then((comments) => {
+        const pastCommentsEl = document.getElementById('past-comments');
+        pastCommentsEl.innerHTML = "";
+        comments.forEach((line) => {
+            pastCommentsEl.appendChild(createCommentElement(line.text, line.dateCreated));
+        });
     });
-  });
 }
 
 // Creates an <div> element for each comment posted.
