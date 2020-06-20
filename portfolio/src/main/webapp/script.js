@@ -26,6 +26,8 @@ function createMap() {
         document.getElementById('map'),
         { center: plexLocation, zoom: 13 }
     );
+
+    let markers = new Array();
     
     const plexMarker = new google.maps.Marker({
         position: plexLocation,
@@ -40,11 +42,26 @@ function createMap() {
     });
 
     const ikeaMarker = new google.maps.Marker({
-        position: { lat: 1.288719, lng: 103.807688 },
+        position: { lat: 1.288034, lng: 103.806025 },
         map: map,
         title: 'Meatballs!'
     });
-      
+    
+    markers.push(plexMarker);
+    markers.push(nusMarker);
+    markers.push(ikeaMarker);
+
+    setMarkersListener(markers, map);
+}
+
+// Set listener to each marker to zoom in upon click
+function setMarkersListener(markers, map) {
+    markers.forEach(marker =>
+        marker.addListener('click', function() {
+            map.setZoom(17);
+            map.setCenter(marker.getPosition());
+        })
+    );
 }
 
 // Get latest comments from server
