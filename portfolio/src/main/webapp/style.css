@@ -89,6 +89,12 @@ body {
     color: #660066;
 }
 
+#map {
+  border: thin solid black;
+  height: 450px;
+  width: 450px;
+}
+
 input[type=text] {
     width: 100%;
     padding: 10px 10px;
