@@ -30,19 +30,25 @@ import com.google.gson.Gson;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Date;
+import com.google.cloud.translate.Translate;
+import com.google.cloud.translate.TranslateOptions;
+import com.google.cloud.translate.Translation;
 
 @WebServlet("/comments")
 public class DataServlet extends HttpServlet {
 
   DatastoreService datastore;
+  Translate translate;
 
   @Override
   public void init() {
    datastore = DatastoreServiceFactory.getDatastoreService();
+   translate = TranslateOptions.getDefaultInstance().getService();
   }
 
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    String languageCode = request.getParameter("language");
     Query query = new Query("Comment").addSort("dateCreated", SortDirection.DESCENDING);
     PreparedQuery results = datastore.prepare(query);
 
@@ -50,15 +56,19 @@ public class DataServlet extends HttpServlet {
 
     for (Entity entity : results.asIterable()) {
       long id = entity.getKey().getId();
-      String text = (String) entity.getProperty("text");
       Date dateCreated = (Date) entity.getProperty("dateCreated");
 
-      Comment comment = new Comment(id, text, dateCreated);
+      String text = (String) entity.getProperty("text");
+      Translation translation = translate.translate(text, Translate.TranslateOption.targetLanguage(languageCode));
+      String translatedText = translation.getTranslatedText();
+      Comment comment = new Comment(id, translatedText, dateCreated);
+
       comments.add(comment);
     }
 
     Gson gson = new Gson();
     response.setContentType("application/json;");
+    response.setCharacterEncoding("UTF-8");
     response.getWriter().println(gson.toJson(comments));
   }
 
