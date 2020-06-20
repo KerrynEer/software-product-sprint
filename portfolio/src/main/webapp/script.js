@@ -20,17 +20,29 @@ function loadPage() {
 
 // Creates a map and adds it to the page.
 function createMap() {
-    const plexLocation = { lat: 37.422, lng: -122.084 };
+    const plexLocation = { lat: 1.276194, lng: 103.799840 };
   
     const map = new google.maps.Map(
         document.getElementById('map'),
-        { center: plexLocation, zoom: 16 }
+        { center: plexLocation, zoom: 13 }
     );
     
     const plexMarker = new google.maps.Marker({
         position: plexLocation,
         map: map,
         title: 'Where the cool stuff is built'
+    });
+
+    const nusMarker = new google.maps.Marker({
+        position: { lat: 1.295089, lng: 103.773635 },
+        map: map,
+        title: 'Where I hang out most'
+    });
+
+    const ikeaMarker = new google.maps.Marker({
+        position: { lat: 1.288719, lng: 103.807688 },
+        map: map,
+        title: 'Meatballs!'
     });
       
 }
