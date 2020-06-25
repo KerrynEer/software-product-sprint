@@ -67,7 +67,7 @@ public final class FindMeetingQuery {
     return timeSlots;
   }
 
-  private Boolean hasClash(Event scheduled, Collection<String> attendees ) {
+  private static Boolean hasClash(Event scheduled, Collection<String> attendees ) {
     Set<String> eventAttendees = scheduled.getAttendees();
   
     for (String attendee: attendees) {
